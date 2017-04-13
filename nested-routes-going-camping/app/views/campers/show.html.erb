@@ -1,0 +1,6 @@
+<%= @camper.name %>
+<ul>
+  <% @camper.supplies.each do |supply| %>
+    <li><%= supply.name %></li>
+  <% end %>
+</ul>

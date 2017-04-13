@@ -1,0 +1,1169 @@
+  [1m[35m (124.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "camping-trip-rails_test"[0m
+  [1m[35m (466.9ms)[0m  [1m[35mCREATE DATABASE "camping-trip-rails_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "campers" ("id" serial primary key, "name" character varying NOT NULL, "campsite_id" integer, "created_at" timestamp, "updated_at" timestamp)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "campsites" ("id" serial primary key, "name" character varying, "created_at" timestamp, "updated_at" timestamp)[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "supplies" ("id" serial primary key, "name" character varying, "camper_id" integer, "created_at" timestamp, "updated_at" timestamp)[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20151215041127')[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20151215041057'), ('20151215041119');
+
+[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", 2017-04-12 14:56:42 UTC], ["updated_at", 2017-04-12 14:56:42 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Terrell Wisozk"], ["campsite_id", 1], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Miss Carol Kuvalis"], ["campsite_id", 2], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 10:56:43 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.7ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 243ms (Views: 240.3ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 10:56:43 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.4ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 10:56:43 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.4ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Norma Schinner Sr."], ["campsite_id", 5], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Anya Aufderhar"], ["campsite_id", 6], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/5/campers" for 127.0.0.1 at 2017-04-12 10:56:43 -0400
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Terry McClure"], ["campsite_id", 7], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 5], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Aaron Schaefer"], ["campsite_id", 8], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 6], ["created_at", 2017-04-12 14:56:43 UTC], ["updated_at", 2017-04-12 14:56:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/5/supplies" for 127.0.0.1 at 2017-04-12 10:56:43 -0400
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Elmer Gibson Sr."], ["campsite_id", 9], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Duane Ward"], ["campsite_id", 10], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 11:03:22 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.5ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 138ms (Views: 136.1ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 11:03:22 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.3ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 11:03:22 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.4ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 32ms (Views: 30.1ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mable Gorczany"], ["campsite_id", 13], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "German Weimann III"], ["campsite_id", 14], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/13/campers" for 127.0.0.1 at 2017-04-12 11:03:22 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"13"}
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.3ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Madeline Deckow"], ["campsite_id", 15], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 11], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mrs. Immanuel Effertz"], ["campsite_id", 16], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 12], ["created_at", 2017-04-12 15:03:22 UTC], ["updated_at", 2017-04-12 15:03:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/11/supplies" for 127.0.0.1 at 2017-04-12 11:03:22 -0400
+Processing by SuppliesController#index as HTML
+  Parameters: {"camper_id"=>"11"}
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.4ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Dr. Kayden Armstrong"], ["campsite_id", 17], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mellie Padberg"], ["campsite_id", 18], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 11:39:27 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.7ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 160ms (Views: 157.5ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 11:39:27 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.6ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 11:39:27 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.5ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 26ms (Views: 24.0ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mrs. Ewell Prohaska"], ["campsite_id", 21], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Fernando Schaden I"], ["campsite_id", 22], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/21/campers" for 127.0.0.1 at 2017-04-12 11:39:27 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"21"}
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.3ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Paige Walker"], ["campsite_id", 23], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 17], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Cooper Schulist"], ["campsite_id", 24], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 18], ["created_at", 2017-04-12 15:39:27 UTC], ["updated_at", 2017-04-12 15:39:27 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/17/supplies" for 127.0.0.1 at 2017-04-12 11:39:27 -0400
+Processing by SuppliesController#index as HTML
+  Parameters: {"camper_id"=>"17"}
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Valentin Bartoletti"], ["campsite_id", 25], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Clair Waelchi III"], ["campsite_id", 26], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 11:45:43 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.5ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 153ms (Views: 151.1ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 11:45:43 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.5ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (19.5ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 11:45:43 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.5ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 31ms (Views: 29.2ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mrs. Marta Gerhold"], ["campsite_id", 29], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mrs. Wilford Osinski"], ["campsite_id", 30], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/29/campers" for 127.0.0.1 at 2017-04-12 11:45:43 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"29"}
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.4ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Santos Mann III"], ["campsite_id", 31], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 23], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Devan MacGyver"], ["campsite_id", 32], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 24], ["created_at", 2017-04-12 15:45:43 UTC], ["updated_at", 2017-04-12 15:45:43 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/23/supplies" for 127.0.0.1 at 2017-04-12 11:45:43 -0400
+Processing by SuppliesController#index as HTML
+  Parameters: {"camper_id"=>"23"}
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:52:22 UTC], ["updated_at", 2017-04-12 15:52:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Maryjane Ruecker"], ["campsite_id", 33], ["created_at", 2017-04-12 15:52:22 UTC], ["updated_at", 2017-04-12 15:52:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:52:22 UTC], ["updated_at", 2017-04-12 15:52:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sigmund Tillman"], ["campsite_id", 34], ["created_at", 2017-04-12 15:52:22 UTC], ["updated_at", 2017-04-12 15:52:22 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 11:52:22 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.5ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 141ms (Views: 139.4ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:52:23 UTC], ["updated_at", 2017-04-12 15:52:23 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:52:23 UTC], ["updated_at", 2017-04-12 15:52:23 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 11:52:23 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.3ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 15:52:23 UTC], ["updated_at", 2017-04-12 15:52:23 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 15:52:23 UTC], ["updated_at", 2017-04-12 15:52:23 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 11:52:23 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:52:23 UTC], ["updated_at", 2017-04-12 15:52:23 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mr. Immanuel Bartell"], ["campsite_id", 37], ["created_at", 2017-04-12 15:52:23 UTC], ["updated_at", 2017-04-12 15:52:23 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:52:23 UTC], ["updated_at", 2017-04-12 15:52:23 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Judah Powlowski"], ["campsite_id", 38], ["created_at", 2017-04-12 15:52:23 UTC], ["updated_at", 2017-04-12 15:52:23 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/37/campers" for 127.0.0.1 at 2017-04-12 11:52:23 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"37"}
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.3ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:52:36 UTC], ["updated_at", 2017-04-12 15:52:36 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mr. Nia Berge"], ["campsite_id", 39], ["created_at", 2017-04-12 15:52:36 UTC], ["updated_at", 2017-04-12 15:52:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 29], ["created_at", 2017-04-12 15:52:36 UTC], ["updated_at", 2017-04-12 15:52:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:52:36 UTC], ["updated_at", 2017-04-12 15:52:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Giovanni Jaskolski"], ["campsite_id", 40], ["created_at", 2017-04-12 15:52:36 UTC], ["updated_at", 2017-04-12 15:52:36 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 30], ["created_at", 2017-04-12 15:52:36 UTC], ["updated_at", 2017-04-12 15:52:36 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/29/supplies" for 127.0.0.1 at 2017-04-12 11:52:36 -0400
+Processing by SuppliesController#index as HTML
+  Parameters: {"camper_id"=>"29"}
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:53:57 UTC], ["updated_at", 2017-04-12 15:53:57 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Kurt Bode"], ["campsite_id", 41], ["created_at", 2017-04-12 15:53:57 UTC], ["updated_at", 2017-04-12 15:53:57 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:53:57 UTC], ["updated_at", 2017-04-12 15:53:57 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ms. Brook Sauer"], ["campsite_id", 42], ["created_at", 2017-04-12 15:53:57 UTC], ["updated_at", 2017-04-12 15:53:57 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 11:53:57 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.7ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 20714ms (Views: 168.1ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:54:17 UTC], ["updated_at", 2017-04-12 15:54:17 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:54:17 UTC], ["updated_at", 2017-04-12 15:54:17 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 11:54:17 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.4ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 7ms (Views: 4.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 15:54:17 UTC], ["updated_at", 2017-04-12 15:54:17 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 15:54:17 UTC], ["updated_at", 2017-04-12 15:54:17 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 11:54:17 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.6ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:54:17 UTC], ["updated_at", 2017-04-12 15:54:17 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Delphine Collins"], ["campsite_id", 45], ["created_at", 2017-04-12 15:54:17 UTC], ["updated_at", 2017-04-12 15:54:17 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:54:17 UTC], ["updated_at", 2017-04-12 15:54:17 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Howard McGlynn"], ["campsite_id", 46], ["created_at", 2017-04-12 15:54:17 UTC], ["updated_at", 2017-04-12 15:54:17 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/45/campers" for 127.0.0.1 at 2017-04-12 11:54:17 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"45"}
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.4ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3170ms (Views: 5.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:54:21 UTC], ["updated_at", 2017-04-12 15:54:21 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Lizeth Reinger"], ["campsite_id", 47], ["created_at", 2017-04-12 15:54:21 UTC], ["updated_at", 2017-04-12 15:54:21 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 35], ["created_at", 2017-04-12 15:54:21 UTC], ["updated_at", 2017-04-12 15:54:21 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:54:21 UTC], ["updated_at", 2017-04-12 15:54:21 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ramiro Douglas"], ["campsite_id", 48], ["created_at", 2017-04-12 15:54:21 UTC], ["updated_at", 2017-04-12 15:54:21 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 36], ["created_at", 2017-04-12 15:54:21 UTC], ["updated_at", 2017-04-12 15:54:21 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/35/supplies" for 127.0.0.1 at 2017-04-12 11:54:21 -0400
+Processing by SuppliesController#index as HTML
+  Parameters: {"camper_id"=>"35"}
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:54:28 UTC], ["updated_at", 2017-04-12 15:54:28 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Felicita Predovic"], ["campsite_id", 49], ["created_at", 2017-04-12 15:54:28 UTC], ["updated_at", 2017-04-12 15:54:28 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:54:28 UTC], ["updated_at", 2017-04-12 15:54:28 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Harrison Bayer"], ["campsite_id", 50], ["created_at", 2017-04-12 15:54:28 UTC], ["updated_at", 2017-04-12 15:54:28 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 11:54:28 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.5ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 1995ms (Views: 156.4ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:54:30 UTC], ["updated_at", 2017-04-12 15:54:30 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:54:30 UTC], ["updated_at", 2017-04-12 15:54:30 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 11:54:30 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.5ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 15:54:30 UTC], ["updated_at", 2017-04-12 15:54:30 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 15:54:30 UTC], ["updated_at", 2017-04-12 15:54:30 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 11:54:30 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.5ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:54:30 UTC], ["updated_at", 2017-04-12 15:54:30 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Haylie Schmidt"], ["campsite_id", 53], ["created_at", 2017-04-12 15:54:30 UTC], ["updated_at", 2017-04-12 15:54:30 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:54:31 UTC], ["updated_at", 2017-04-12 15:54:31 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Herbert Feil"], ["campsite_id", 54], ["created_at", 2017-04-12 15:54:31 UTC], ["updated_at", 2017-04-12 15:54:31 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/53/campers" for 127.0.0.1 at 2017-04-12 11:54:31 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"53"}
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.5ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 181543ms (Views: 5.3ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:57:32 UTC], ["updated_at", 2017-04-12 15:57:32 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Estrella Schimmel"], ["campsite_id", 55], ["created_at", 2017-04-12 15:57:32 UTC], ["updated_at", 2017-04-12 15:57:32 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 41], ["created_at", 2017-04-12 15:57:32 UTC], ["updated_at", 2017-04-12 15:57:32 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:57:32 UTC], ["updated_at", 2017-04-12 15:57:32 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Dedrick Corwin"], ["campsite_id", 56], ["created_at", 2017-04-12 15:57:32 UTC], ["updated_at", 2017-04-12 15:57:32 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 42], ["created_at", 2017-04-12 15:57:32 UTC], ["updated_at", 2017-04-12 15:57:32 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/41/supplies" for 127.0.0.1 at 2017-04-12 11:57:32 -0400
+Processing by SuppliesController#index as HTML
+  Parameters: {"camper_id"=>"41"}
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Buster Brown"], ["campsite_id", 57], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mrs. Stephan Terry"], ["campsite_id", 58], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 11:57:41 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.5ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 165ms (Views: 163.2ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 11:57:41 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.6ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 11:57:41 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eleazar Pacocha"], ["campsite_id", 61], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Roberta Johnson"], ["campsite_id", 62], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/61/campers" for 127.0.0.1 at 2017-04-12 11:57:41 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"61"}
+  [1m[36mCampsite Load (0.3ms)[0m  [1m[34mSELECT  "campsites".* FROM "campsites" WHERE "campsites"."id" = $1 LIMIT $2[0m  [["id", 61], ["LIMIT", 1]]
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.3ms)[0m  [1m[34mSELECT "campers".* FROM "campers" WHERE "campers"."campsite_id" = $1[0m  [["campsite_id", 61]]
+  Rendered campers/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 21ms (Views: 5.3ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mabel Adams"], ["campsite_id", 63], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 47], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Dr. Noel Sanford"], ["campsite_id", 64], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 48], ["created_at", 2017-04-12 15:57:41 UTC], ["updated_at", 2017-04-12 15:57:41 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/47/supplies" for 127.0.0.1 at 2017-04-12 11:57:41 -0400
+Processing by SuppliesController#index as HTML
+  Parameters: {"camper_id"=>"47"}
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Miss Camila Kuhlman"], ["campsite_id", 65], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mrs. Vladimir Maggio"], ["campsite_id", 66], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 12:03:37 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.4ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 153ms (Views: 150.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 12:03:37 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.4ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 12:03:37 -0400
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Dr. Perry O'Keefe"], ["campsite_id", 69], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Blaise Rohan"], ["campsite_id", 70], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/69/campers" for 127.0.0.1 at 2017-04-12 12:03:37 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"69"}
+  [1m[36mCampsite Load (0.3ms)[0m  [1m[34mSELECT  "campsites".* FROM "campsites" WHERE "campsites"."id" = $1 LIMIT $2[0m  [["id", 69], ["LIMIT", 1]]
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.3ms)[0m  [1m[34mSELECT "campers".* FROM "campers" WHERE "campers"."campsite_id" = $1[0m  [["campsite_id", 69]]
+  Rendered campers/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 22ms (Views: 6.9ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Neha Prosacco MD"], ["campsite_id", 71], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 53], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Felicia Sauer"], ["campsite_id", 72], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 54], ["created_at", 2017-04-12 16:03:37 UTC], ["updated_at", 2017-04-12 16:03:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/53/supplies" for 127.0.0.1 at 2017-04-12 12:03:37 -0400
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Elnora Mayer"], ["campsite_id", 73], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Reese Pacocha"], ["campsite_id", 74], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 12:03:52 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.6ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 143ms (Views: 141.0ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 12:03:52 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.5ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 12:03:52 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.4ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Janice Schowalter"], ["campsite_id", 77], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Miss Alphonso Zieme"], ["campsite_id", 78], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/77/campers" for 127.0.0.1 at 2017-04-12 12:03:52 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"77"}
+  [1m[36mCampsite Load (0.3ms)[0m  [1m[34mSELECT  "campsites".* FROM "campsites" WHERE "campsites"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.4ms)[0m  [1m[34mSELECT "campers".* FROM "campers" WHERE "campers"."campsite_id" = $1[0m  [["campsite_id", 77]]
+  Rendered campers/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 20ms (Views: 7.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Kolby Kris"], ["campsite_id", 79], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 59], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ms. Giovanna Collins"], ["campsite_id", 80], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 60], ["created_at", 2017-04-12 16:03:52 UTC], ["updated_at", 2017-04-12 16:03:52 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/59/supplies" for 127.0.0.1 at 2017-04-12 12:03:52 -0400
+Processing by SuppliesController#index as HTML
+  Parameters: {"camper_id"=>"59"}
+  [1m[36mCamper Load (0.3ms)[0m  [1m[34mSELECT  "campers".* FROM "campers" WHERE "campers"."id" = $1 LIMIT $2[0m  [["id", 59], ["LIMIT", 1]]
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."camper_id" = $1[0m  [["camper_id", 59]]
+  Rendered supplies/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 9ms (Views: 5.3ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mr. Mozell Dicki"], ["campsite_id", 81], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Dillon Collier"], ["campsite_id", 82], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 12:04:19 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (2.0ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 156ms (Views: 153.1ms | ActiveRecord: 2.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 12:04:19 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.4ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 12:04:19 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.6ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Emmanuel Goyette"], ["campsite_id", 85], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Else Runolfsson"], ["campsite_id", 86], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/85/campers" for 127.0.0.1 at 2017-04-12 12:04:19 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"85"}
+  [1m[36mCampsite Load (0.3ms)[0m  [1m[34mSELECT  "campsites".* FROM "campsites" WHERE "campsites"."id" = $1 LIMIT $2[0m  [["id", 85], ["LIMIT", 1]]
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.3ms)[0m  [1m[34mSELECT "campers".* FROM "campers" WHERE "campers"."campsite_id" = $1[0m  [["campsite_id", 85]]
+  Rendered campers/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 18ms (Views: 5.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ms. Kayla Windler"], ["campsite_id", 87], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 65], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Tomas Ullrich DVM"], ["campsite_id", 88], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 66], ["created_at", 2017-04-12 16:04:19 UTC], ["updated_at", 2017-04-12 16:04:19 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/65/supplies" for 127.0.0.1 at 2017-04-12 12:04:19 -0400
+Processing by SuppliesController#index as HTML
+  Parameters: {"camper_id"=>"65"}
+  [1m[36mCamper Load (0.3ms)[0m  [1m[34mSELECT  "campers".* FROM "campers" WHERE "campers"."id" = $1 LIMIT $2[0m  [["id", 65], ["LIMIT", 1]]
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."camper_id" = $1[0m  [["camper_id", 65]]
+  Rendered supplies/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Princess Goldner"], ["campsite_id", 89], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Jade Swaniawski"], ["campsite_id", 90], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers" for 127.0.0.1 at 2017-04-12 12:15:45 -0400
+Processing by CampersController#index as HTML
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.6ms)[0m  [1m[34mSELECT "campers".* FROM "campers"[0m
+  Rendered campers/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 154ms (Views: 152.5ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites" for 127.0.0.1 at 2017-04-12 12:15:45 -0400
+Processing by CampsitesController#index as HTML
+  Rendering campsites/index.html.erb within layouts/application
+  [1m[36mCampsite Load (0.4ms)[0m  [1m[34mSELECT "campsites".* FROM "campsites"[0m
+  Rendered campsites/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bacon!"], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Eggs!"], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/supplies" for 127.0.0.1 at 2017-04-12 12:15:45 -0400
+Processing by SuppliesController#index as HTML
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.5ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies"[0m
+  Rendered supplies/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite A"], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Elisabeth Orn"], ["campsite_id", 93], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Campsite B"], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Rebeka Swift MD"], ["campsite_id", 94], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campsites/93/campers" for 127.0.0.1 at 2017-04-12 12:15:45 -0400
+Processing by CampersController#index as HTML
+  Parameters: {"campsite_id"=>"93"}
+  [1m[36mCampsite Load (0.3ms)[0m  [1m[34mSELECT  "campsites".* FROM "campsites" WHERE "campsites"."id" = $1 LIMIT $2[0m  [["id", 93], ["LIMIT", 1]]
+  Rendering campers/index.html.erb within layouts/application
+  [1m[36mCamper Load (0.3ms)[0m  [1m[34mSELECT "campers".* FROM "campers" WHERE "campers"."campsite_id" = $1[0m  [["campsite_id", 93]]
+  Rendered campers/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 19ms (Views: 5.7ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Brooke Dare"], ["campsite_id", 95], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bacon!"], ["camper_id", 71], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campsites" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Test Campsite"], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "campers" ("name", "campsite_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Anastacio Altenwerth"], ["campsite_id", 96], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "supplies" ("name", "camper_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eggs!"], ["camper_id", 72], ["created_at", 2017-04-12 16:15:45 UTC], ["updated_at", 2017-04-12 16:15:45 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/campers/71/supplies" for 127.0.0.1 at 2017-04-12 12:15:45 -0400
+Processing by SuppliesController#index as HTML
+  Parameters: {"camper_id"=>"71"}
+  [1m[36mCamper Load (0.3ms)[0m  [1m[34mSELECT  "campers".* FROM "campers" WHERE "campers"."id" = $1 LIMIT $2[0m  [["id", 71], ["LIMIT", 1]]
+  Rendering supplies/index.html.erb within layouts/application
+  [1m[36mSupply Load (0.3ms)[0m  [1m[34mSELECT "supplies".* FROM "supplies" WHERE "supplies"."camper_id" = $1[0m  [["camper_id", 71]]
+  Rendered supplies/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 9ms (Views: 5.0ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m

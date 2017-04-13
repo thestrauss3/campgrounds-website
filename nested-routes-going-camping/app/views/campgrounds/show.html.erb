@@ -1,0 +1,27 @@
+<h1><%= @campground.name %></h1>
+
+<h2>Description of this campground:</h2>
+<p><%= @campground.description %></p>
+<h2>Amenities available at this campground:</h2>
+<ul>
+  <% @campground.amenities.each do |amenity| %>
+    <li><%= amenity.name %></li>
+  <% end %>
+</ul>
+<h3>Average rating by people who know: <%= @campground.average_rating %></h3>
+
+
+<h3>There are <%= @campground.campsites.size %> campsites at this location. Currently there are <%= @campground.campsites.where(available: true).size; %> open campsites.  </h3>
+<h4>There's a bunch of people camping here. <%= link_to "See who's here right now!", campground_campers_path(params[:id]) %></h4>
+
+<h4>There may be some supplies at this campground already. You may be able to borrow something if you ask. <%= link_to "See what's here right now!", campground_supplies_path(params[:id]) %></h4>
+
+<h3>Reviews</h3>
+<% if @campground.reviews.size > 0 %>
+  <h4><%= @campground.reviews.first.title %></h4>
+  <p><%= @campground.reviews.first.body %></p>
+  <p>By <%= @campground.reviews.first.camper.name %></p>
+  <%= link_to 'see more...', campground_reviews_path(@campground) %>
+<% else %>
+  There don't appear to be any reviews for this campground yet. Be the first!
+<% end %>

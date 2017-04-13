@@ -1,0 +1,14 @@
+<h1><%= @campground.name %></h1>
+
+<h2>Description of this campground:</h2>
+<p><%= @campground.description %></p>
+<h2>Amenities available at this campground:</h2>
+<ul>
+  <% @campground.amenities.each do |amenity| %>
+    <li><%= amenity.name %></li>
+  <% end %>
+</ul>
+
+<h4>There's a bunch of people camping here right now. <%= link_to "See who's camping here right now!", campground_campers_path(params[:id]) %></h4>
+
+<h4>It looks like there may be some supplies at this campground already. You may be able to borrow something if you ask. <%= link_to "See what's here right now!", campground_supplies_path(params[:id]) %></h4>

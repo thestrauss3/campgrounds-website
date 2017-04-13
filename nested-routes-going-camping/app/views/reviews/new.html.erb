@@ -1,0 +1,29 @@
+<h1>How was your stay at <%= @campground.name %></h1>
+
+
+
+<div class="campground_review_form">
+<%= form_for [@campground, @review] do |f| %>
+  <div class="field">
+    <%= f.label :camper, "Full Name" %><br/>
+    <%= f.text_field :camper %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %><br/>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %><br/>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rating, "How would you rate this campground?" %><br/>
+    <%= f.number_field :rating %>
+  </div>
+
+  <%= f.submit "Submit Review" %>
+<% end %>
+</div>

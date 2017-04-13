@@ -1,0 +1,9 @@
+<h1>Reviews for <%= @campground.name %></h1>
+<% @reviews.each do |review| %>
+  <h4><%= review.title %></h4>
+  <p>Rating: <%= review.rating %></p>
+  <p><%= review.body %></p>
+  <p>By <%= review.camper.name %></p>
+  <br/>
+<% end %>
+<p>Have you been here? <%= link_to "Leave a review so other campers know what it's like", new_campground_review_path %></p>

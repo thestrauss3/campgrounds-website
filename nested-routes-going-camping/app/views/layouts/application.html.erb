@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WHERE'S THE CORPMAN</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <div class="header_menu">
+    <%= render "layouts/menu_list" %>
+  </div>
+  <div class="login">
+    <%= link_to "Sign in with Github", "/auth/github" %>
+  </div>
+</header>
+
+<%= yield %>
+<footer>
+  <div class="footer_menu">
+    <%= render "layouts/menu_list" %>
+  </div>
+</footer>
+</body>
+</html>
